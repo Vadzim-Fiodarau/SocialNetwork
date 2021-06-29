@@ -6,7 +6,7 @@ import MyPosts from './MyPosts/MyPosts'
 
 const Profile = () => {
     return (
-        <div className={classes.content}>
+        <div>
             <div>
                 <img
                     src='https://buddy.ghostpool.com/wp-content/uploads/photodune-3382849-mountain3-s1-1003x480.jpg'/>
