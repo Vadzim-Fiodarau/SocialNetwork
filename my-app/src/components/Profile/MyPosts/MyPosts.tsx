@@ -3,7 +3,19 @@ import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 
-const MyPosts = () => {
+export type postsType = {
+    id: number
+    message: string
+    likeCounter: number
+}
+
+
+
+const MyPosts = (props: any) => {
+
+    let elementsPosts = props.posts
+        .map((p: { message: string; likeCounter: number; }) => <Post message={p.message} likeCounter={p.likeCounter}/>)
+
     return (
         <div className={classes.postBlock}>
             <h3>My posts</h3>
@@ -17,9 +29,7 @@ const MyPosts = () => {
             </div>
 
             <div className={classes.posts}>
-                <Post message='Hello, how are you?' likeCounter={15}/>
-                <Post message="It's my first post!" likeCounter={20}/>
-
+                {elementsPosts}
             </div>
 
         </div>
