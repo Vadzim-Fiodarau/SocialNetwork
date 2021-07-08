@@ -5,10 +5,12 @@ import React from "react";
 export type DialogItemProps = {
     id: number
     name: string
+    src:string
 }
 export type dialogsTypes = {
     id: number
     name: string
+    src:string
 }
 
 
@@ -17,8 +19,10 @@ const DialogItem = (props: DialogItemProps) => {
 
     return (
             <div className={s.dialog + ' ' + s.active}>
-                <NavLink to={path}>{props.name}</NavLink>
+                <NavLink to={path}> <img className={s.img} src={props.src}/>  {props.name} </NavLink>
+
             </div>
     )
 }
 export default DialogItem
+

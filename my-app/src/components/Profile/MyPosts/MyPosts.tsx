@@ -8,10 +8,12 @@ export type postsType = {
     message: string
     likeCounter: number
 }
+type MyPostsTypeProps = {
+    posts: Array<postsType>
+}
 
 
-
-const MyPosts = (props: any) => {
+const MyPosts = (props: MyPostsTypeProps) => {
 
     let elementsPosts = props.posts
         .map((p: { message: string; likeCounter: number; }) => <Post message={p.message} likeCounter={p.likeCounter}/>)

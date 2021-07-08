@@ -3,10 +3,12 @@ import MyPosts, {postsType} from './MyPosts/MyPosts'
 import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 import Post from "./MyPosts/Post/Post";
 
+type ProfileTypeProps = {
+   posts: Array<postsType>
+}
 
+const Profile = (props: ProfileTypeProps) => {
 
-const Profile = (props: any) =>
-    {
         return (
             <div>
                 <ProfileInfo/>
