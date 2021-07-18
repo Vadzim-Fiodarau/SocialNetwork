@@ -11,11 +11,12 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {messagesTypes} from "./components/Dialogs/Mesages/Message";
 import {dialogsTypes} from "./components/Dialogs/DialogItem/DialogItem";
 import {postsType} from "./components/Profile/MyPosts/MyPosts";
-import {profilePagePropsType, statePropsType} from "./redux/state";
+import {addPostPropsType, profilePagePropsType, statePropsType} from "./redux/state";
 
 
 type AppPropsType = {
-    appState:statePropsType
+    appState: statePropsType
+    dispatch: (action:any) => void
 
 }
 
@@ -29,7 +30,11 @@ function App(props: AppPropsType) {
                 <div className={'app-wrapper-content'}>
                     <Route path='/dialogs' render={() => <Dialogs messages={props.appState.dialogsPage.messages}
                                                                   dialogs={props.appState.dialogsPage.dialogs}/>}/>
-                    <Route path='/profile' render={() => <Profile posts={props.appState.profilePage.posts}/>}/>
+                    <Route path='/profile' render={() => <Profile posts={props.appState.profilePage.posts}
+                                                                  newPostText={props.appState.profilePage.newPostText}
+                                                                  dispatch={props.dispatch}
+
+                    />}/>
                     <Route path='/news' render={() => <News/>}/>
                     <Route path='/music' render={() => <Music/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>

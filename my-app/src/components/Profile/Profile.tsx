@@ -5,14 +5,21 @@ import Post from "./MyPosts/Post/Post";
 
 type ProfileTypeProps = {
    posts: Array<postsType>
+    newPostText: string
+    dispatch: (action:any) => void
+
 }
 
-const Profile = (props: ProfileTypeProps) => {
+const Profile = (props:ProfileTypeProps) => {
 
         return (
             <div>
                 <ProfileInfo/>
-                <MyPosts posts ={props.posts}/>
+                <MyPosts posts ={props.posts}
+                         dispatch={props.dispatch}
+                         newPostText={props.newPostText}
+
+                />
             </div>
         )
     }

@@ -2,7 +2,13 @@
     padding: 10px;
 
 }
-.dialogsItem .active {
+
+.dialogsItem a {
+    color: white;
+    text-decoration: none;
+}
+
+.dialogsItem a.active {
     color: gold;
 }
 .img {
