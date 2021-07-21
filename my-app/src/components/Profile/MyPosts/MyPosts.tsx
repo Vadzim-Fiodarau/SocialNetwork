@@ -26,7 +26,7 @@ const MyPosts = (props: MyPostsTypeProps) => {
         .map((p: { message: string; likeCounter: number; }) => <Post message={p.message} likeCounter={p.likeCounter}/>)
 
 
-    let newPostElement:any  = React.createRef<HTMLInputElement>();
+    let newPostElement:React.RefObject<HTMLTextAreaElement>  = React.createRef<HTMLTextAreaElement>();
 
     let addPost = () => {
         props.dispatch(addPostActionCreator())
@@ -34,7 +34,7 @@ const MyPosts = (props: MyPostsTypeProps) => {
 
 
     let onChangePost = () => {
-        let text = newPostElement.current.value;
+        let text = newPostElement.current?.value;
         let action = updateNewPostTextActionCreator(text);
         props.dispatch(action)
     }
