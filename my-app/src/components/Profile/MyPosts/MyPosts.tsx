@@ -1,8 +1,8 @@
 
 import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
-import React, {LegacyRef, RefObject} from 'react';
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/state";
+import React, {ChangeEvent, LegacyRef, RefObject} from 'react';
+import {ActionsTypes, addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/state";
 
 
 
@@ -14,7 +14,7 @@ export type postsType = {
 type MyPostsTypeProps = {
     posts: Array<postsType>
     newPostText: string
-    dispatch: (action:any) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 
@@ -25,16 +25,12 @@ const MyPosts = (props: MyPostsTypeProps) => {
     let elementsPosts = props.posts
         .map((p: { message: string; likeCounter: number; }) => <Post message={p.message} likeCounter={p.likeCounter}/>)
 
-
-    let newPostElement:React.RefObject<HTMLTextAreaElement>  = React.createRef<HTMLTextAreaElement>();
-
     let addPost = () => {
         props.dispatch(addPostActionCreator())
     }
 
-
-    let onChangePost = () => {
-        let text = newPostElement.current?.value;
+    let onChangePost = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let text = e.currentTarget.value;
         let action = updateNewPostTextActionCreator(text);
         props.dispatch(action)
     }
@@ -44,7 +40,7 @@ const MyPosts = (props: MyPostsTypeProps) => {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea ref={newPostElement} value={props.newPostText} onChange={onChangePost}/>
+                    <textarea value={props.newPostText} onChange={onChangePost}/>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>
