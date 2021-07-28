@@ -1,8 +1,9 @@
 
 import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
-import React, {ChangeEvent, LegacyRef, RefObject} from 'react';
-import {ActionsTypes, addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/state";
+import React, {ChangeEvent} from 'react';
+import {ActionsTypes} from "../../../redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 
 
 
