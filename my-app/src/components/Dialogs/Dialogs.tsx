@@ -3,7 +3,7 @@ import s from './Dialogs.module.css'
 import DialogItem, {dialogsTypes} from "./DialogItem/DialogItem";
 import Message, {messagesTypes} from "./Mesages/Message";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
-import {StoreType} from "../../redux/state";
+import {ReduxStoreType, StoreType} from "../../redux/store";
 
 
 
@@ -11,7 +11,7 @@ type DialogsPropsType = {
     messages: Array<messagesTypes>
     dialogs: Array<dialogsTypes>
     newMessageBody:string
-    store:StoreType
+    store:ReduxStoreType
 }
 
 const Dialogs = (props: DialogsPropsType) => {

@@ -22,6 +22,12 @@ export type dialogsPagePropsType = {
     dialogs: Array<dialogsTypes>
     newMessageBody: string
 }
+export type ReduxStoreType = {
+    subscribe: (observer: () => void) => void
+    getState: () => statePropsType
+    dispatch: (action: ActionsTypes) => void
+}
+
 export type addPostPropsType = {
     addPost: () => void
     rerenderEntireTree: () => void
@@ -29,7 +35,7 @@ export type addPostPropsType = {
 export  type StoreType = {
     _state: statePropsType
     _callSubscriber: (state: statePropsType) => void
-    subscribe: (observer: (state: statePropsType) => void) => void
+    subscribe: (observer: () => void) => void
     getState: () => statePropsType
     dispatch: (action: ActionsTypes) => void
 }
