@@ -10,6 +10,7 @@ import Settings from "./components/Settings/Settings";
 import Dialogs from "./components/Dialogs/Dialogs";
 import store from "./redux/redux-store";
 import {ReduxStoreType} from "./redux/store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 type AppPropsType = {
@@ -24,17 +25,8 @@ function App(props: AppPropsType) {
                 <Header/>
                 <Navbar/>
                 <div className={'app-wrapper-content'}>
-                    <Route path='/dialogs' render={() => <Dialogs messages={props.store.getState().dialogsPage.messages}
-                                                                  dialogs={props.store.getState().dialogsPage.dialogs}
-                                                                  newMessageBody={props.store.getState().dialogsPage.newMessageBody}
-                                                                  store={store}
-
-                    />}/>
-                    <Route path='/profile' render={() => <Profile posts={props.store.getState().profilePage.posts}
-                                                                  newPostText={props.store.getState().profilePage.newPostText}
-                                                                  dispatch={props.store.dispatch.bind(props.store)}
-
-                    />}/>
+                    <Route path='/dialogs' render={() => <DialogsContainer store={store}/>}/>
+                    <Route path='/profile' render={() => <Profile store={store}/>}/>
                     <Route path='/news' render={() => <News/>}/>
                     <Route path='/music' render={() => <Music/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
@@ -45,3 +37,11 @@ function App(props: AppPropsType) {
 }
 
 export default App;
+
+// messages={props.store.getState().dialogsPage.messages}
+// dialogs={props.store.getState().dialogsPage.dialogs}
+// newMessageBody={props.store.getState().dialogsPage.newMessageBody}
+
+// posts={props.store.getState().profilePage.posts}
+// newPostText={props.store.getState().profilePage.newPostText}
+// dispatch={props.store.dispatch.bind(props.store)}

@@ -8,32 +8,34 @@ import {ReduxStoreType, StoreType} from "../../redux/store";
 
 
 type DialogsPropsType = {
-    messages: Array<messagesTypes>
-    dialogs: Array<dialogsTypes>
-    newMessageBody:string
-    store:ReduxStoreType
+    updateNewMessageBody:(body:string) => void
+    sendMessage: ()=> void
+    dialogsPage: any
+
 }
 
 const Dialogs = (props: DialogsPropsType) => {
 
-    let dialogsElements = props.dialogs
+    let state = props.dialogsPage
+
+    let dialogsElements = state.dialogs
         .map((d: { name: string; id: number; src: string }) => <DialogItem name={d.name} id={d.id} src={d.src}/>)
 
 
-    let messagesElements = props.messages
+    let messagesElements = state.messages
         .map((m: { message: string; id: number; }) => <Message message={m.message} id={m.id}/>)
 
 
-    let newMessageBody = props.newMessageBody;
+    let newMessageBody = state.newMessageBody
 
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator())
+        props.sendMessage()
     }
 
     let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.target.value
-        props.store.dispatch(updateNewMessageBodyCreator(body))
+        props.updateNewMessageBody(body)
     }
 
     return (
