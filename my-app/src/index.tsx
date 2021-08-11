@@ -9,7 +9,7 @@ import {Provider} from "react-redux";
 
 
 
-let rerenderEntireTree = () => {
+// let rerenderEntireTree = () => {
 
     ReactDOM.render(
         <BrowserRouter>
@@ -18,11 +18,11 @@ let rerenderEntireTree = () => {
             </Provider>
         </BrowserRouter>, document.getElementById('root'));
 
-}
-
-rerenderEntireTree()
-
-store.subscribe(rerenderEntireTree)
+// }
+// //
+// // rerenderEntireTree()
+// //
+// // store.subscribe(rerenderEntireTree)
 
 
 // If you want to start measuring performance in your app, pass a function
