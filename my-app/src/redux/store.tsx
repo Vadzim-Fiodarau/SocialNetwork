@@ -4,6 +4,7 @@ import {messagesTypes} from "../components/Dialogs/Mesages/Message";
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
+import {setUsersAC} from "./users-reducer";
 
 
 export type statePropsType = {
@@ -45,6 +46,24 @@ export type ActionsTypes =
     | UpdateNewPostTextActionType
     | UpdateNewMessageBodyActionType
     | SendMessageActionType
+    | FollowActionType
+    | UnfollowActionType
+    | SetUserType
+
+export type SetUserType = {
+    type: 'SET-USERS'
+    userId: number
+}
+
+export type UnfollowActionType = {
+    type: 'UNFOLLOW'
+    userId: number
+}
+
+export type FollowActionType = {
+    type: 'FOLLOW'
+    userId: number
+}
 
 export type AddPostActionType = {
     type: 'ADD POST'
@@ -62,7 +81,6 @@ export type SendMessageActionType = {
     type: 'SEND-MESSAGE'
     newMessageBody: string
 }
-
 
 
 let store: StoreType = {

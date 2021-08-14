@@ -9,12 +9,12 @@ type stateProfilePropsType = {
 }
 
 
-const initialState =  {
+const initialState = {
     posts: [
         {id: 1, message: 'Hello, how are you?', likeCounter: 12},
         {id: 2, message: "It's my first post!", likeCounter: 11},
     ],
-        newPostText: ''
+    newPostText: ''
 }
 
 export const profileReducer = (state: stateProfilePropsType = initialState, action: ActionsTypes) => {
@@ -26,18 +26,18 @@ export const profileReducer = (state: stateProfilePropsType = initialState, acti
                 message: state.newPostText,
                 likeCounter: 0
             }
-            let stateCopy = {...state}
-            stateCopy.posts = [...state.posts]
-            stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ''
-            return stateCopy
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: ''
+            }
         }
         case
-            UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state}
-            stateCopy.newPostText = action.newText
-            return stateCopy
-        }
+        UPDATE_NEW_POST_TEXT:
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         default:
             return state
 
