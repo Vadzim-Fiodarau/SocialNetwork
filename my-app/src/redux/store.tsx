@@ -52,7 +52,7 @@ export type ActionsTypes =
 
 export type SetUserType = {
     type: 'SET-USERS'
-    userId: number
+    users: any
 }
 
 export type UnfollowActionType = {
