@@ -3,11 +3,11 @@ import {postsType} from "../components/Profile/MyPosts/MyPosts";
 
 const ADD_POST = 'ADD POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
 type stateProfilePropsType = {
     posts: Array<postsType>
     newPostText: string
 }
-
 
 const initialState = {
     posts: [
@@ -17,7 +17,8 @@ const initialState = {
     newPostText: ''
 }
 
-export const profileReducer = (state: stateProfilePropsType = initialState, action: ActionsTypes) => {
+export const profileReducer = (state: stateProfilePropsType = initialState,
+                               action: ActionsTypes) => {
 
     switch (action.type) {
         case ADD_POST: {
@@ -44,7 +45,9 @@ export const profileReducer = (state: stateProfilePropsType = initialState, acti
     }
 }
 
-export const addPostActionCreator = (): AddPostActionType => ({type: ADD_POST})
+export const addPostActionCreator = ()
+  : AddPostActionType => ({type: ADD_POST})
 
-export const updateNewPostTextActionCreator = (text: string): UpdateNewPostTextActionType =>
+export const updateNewPostTextActionCreator = (text: string)
+  :UpdateNewPostTextActionType =>
     ({type: UPDATE_NEW_POST_TEXT, newText: text})

@@ -11,11 +11,6 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/users/UsersContainer";
 
 
-// type AppPropsType = {
-//     store: ReduxStoreType
-// }
-
-
 function App() {
     return (
         <BrowserRouter>
@@ -36,11 +31,3 @@ function App() {
 }
 
 export default App;
-
-// messages={props.store.getState().dialogsPage.messages}
-// dialogs={props.store.getState().dialogsPage.dialogs}
-// newMessageBody={props.store.getState().dialogsPage.newMessageBody}
-
-// posts={props.store.getState().profilePage.posts}
-// newPostText={props.store.getState().profilePage.newPostText}
-// dispatch={props.store.dispatch.bind(props.store)}

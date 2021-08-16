@@ -4,8 +4,6 @@ import {messagesTypes} from "../components/Dialogs/Mesages/Message";
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
-import {setUsersAC} from "./users-reducer";
-
 
 export type statePropsType = {
     profilePage: profilePagePropsType
@@ -28,7 +26,6 @@ export type ReduxStoreType = {
     getState: () => statePropsType
     dispatch: (action: ActionsTypes) => void
 }
-
 export type addPostPropsType = {
     addPost: () => void
     rerenderEntireTree: () => void
@@ -40,31 +37,18 @@ export  type StoreType = {
     getState: () => statePropsType
     dispatch: (action: ActionsTypes) => void
 }
-
-export type ActionsTypes =
-    | AddPostActionType
-    | UpdateNewPostTextActionType
-    | UpdateNewMessageBodyActionType
-    | SendMessageActionType
-    | FollowActionType
-    | UnfollowActionType
-    | SetUserType
-
 export type SetUserType = {
     type: 'SET-USERS'
     users: any
 }
-
 export type UnfollowActionType = {
     type: 'UNFOLLOW'
     userId: number
 }
-
 export type FollowActionType = {
     type: 'FOLLOW'
     userId: number
 }
-
 export type AddPostActionType = {
     type: 'ADD POST'
 
@@ -81,7 +65,14 @@ export type SendMessageActionType = {
     type: 'SEND-MESSAGE'
     newMessageBody: string
 }
-
+export type ActionsTypes =
+    | AddPostActionType
+    | UpdateNewPostTextActionType
+    | UpdateNewMessageBodyActionType
+    | SendMessageActionType
+    | FollowActionType
+    | UnfollowActionType
+    | SetUserType
 
 let store: StoreType = {
     _state: {
@@ -97,30 +88,35 @@ let store: StoreType = {
                 {
                     id: 1,
                     name: 'Vadim',
-                    src: 'https://sun9-75.userapi.com/impf/c630924/v630924802/1446a/s33tSPeU4Ik.jpg?size=720x1080&quality=96&sign=b00fd02c1e71a239a074008d458dcc40&type=album'
+                    src: 'https://sun9-75.userapi.com/impf/c630924/v630924802/' +
+                      '1446a/s33tSPeU4Ik.jpg?size=720x1080&quality=96&sign=' +
+                      'b00fd02c1e71a239a074008d458dcc40&type=album'
                 },
                 {
                     id: 2,
                     name: 'Kate',
-                    src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTirwV3sJSSt0Xf8C43cLbEv2sJR_qWmMpAKnEhdmZbl2b8Cnu8LKZ_CDDvidqsKm4-00k&usqp=CAU'
+                    src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:' +
+                      'ANd9GcTirwV3sJSSt0Xf8C43cLbEv2sJR_qWmMpAKnEhdmZbl2b' +
+                      '8Cnu8LKZ_CDDvidqsKm4-00k&usqp=CAU'
                 },
                 {
                     id: 3,
                     name: 'Alex',
-                    src: 'https://www.interfax.ru/ftproot/photos/photostory/2019/07/09/week4_700.jpg'
+                    src: 'https://www.interfax.ru/ftproot/photos/' +
+                      'photostory/2019/07/09/week4_700.jpg'
                 },
                 {
                     id: 4,
                     name: 'Sveta',
-                    src: 'https://www.istockphoto.com/resources/images/PhotoFTLP/Signature-1205756464.jpg'
+                    src: 'https://www.istockphoto.com/resources/images/' +
+                      'PhotoFTLP/Signature-1205756464.jpg'
                 },
                 {
                     id: 5,
                     name: 'Dimych',
-                    src: 'https://st4.styapokupayu.ru/images/blog_posts/covers/000/136/369_large.jpg?1576853877'
+                    src: 'https://st4.styapokupayu.ru/images/blog_posts/covers' +
+                      '/000/136/369_large.jpg?1576853877'
                 },
-
-
             ],
             messages: [
                 {id: 1, message: 'Hi'},
@@ -144,16 +140,12 @@ let store: StoreType = {
         this._callSubscriber = observe
     },
     dispatch(action: ActionsTypes) { // {type: 'ADD POST'}
-
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
         this._state.sidebar = sidebarReducer(this._state.sidebar, action)
-
         this._callSubscriber(this._state)
     }
-
 }
-
 
 export default store;
 // @ts-ignore

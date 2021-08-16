@@ -2,12 +2,11 @@ import React from "react";
 import {initialStateType, setUsersAC} from "../../redux/users-reducer";
 import styles from './users.module.css'
 
-
-type UsersType = {
+export type UsersType = {
     users: initialStateType[]
     follow: (userId: number) => void
     unfollow: (userId: number) => void
-    setUsers: (users: any) => void
+    setUsers: (users: initialStateType[]) => void
 }
 
 const Users = (props: UsersType) => {
@@ -16,30 +15,32 @@ const Users = (props: UsersType) => {
         props.setUsers([
             {
             id: 1,
-            photoUrl: 'https://sun9-75.userapi.com/impf/c630924/v630924802/1446a/s33tSPeU4Ik.jpg?size=720x1080&quality=96&sign=b00fd02c1e71a239a074008d458dcc40&type=album',
+            photoUrl: 'https://sun9-75.userapi.com/impf/c630924/v630924802/' +
+              '1446a/s33tSPeU4Ik.jpg?size=720x1080&quality=96&sign=b00fd02c1e7' +
+              '1a239a074008d458dcc40&type=album',
             followed: true,
             fullName: 'Vadim Fedorov',
             status: 'i am a boss',
             location: {city: 'LA', country: 'USA'}},
             {
                 id: 2,
-                photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTirwV3sJSSt0Xf8C43cLbEv2sJR_qWmMpAKnEhdmZbl2b8Cnu8LKZ_CDDvidqsKm4-00k&usqp=CAU',
+                photoUrl: 'https://encrypted-tbn0.gstatic.com/' +
+                  'images?q=tbn:ANd9GcTirwV3sJSSt0Xf8C43cLbEv2sJR_qW' +
+                  'mMpAKnEhdmZbl2b8Cnu8LKZ_CDDvidqsKm4-00k&usqp=CAU',
                 followed: true,
                 fullName: 'Kate Fedorova',
                 status: 'i am a wife of boss',
                 location: {city: 'LA', country: 'USA'}},
             {
                 id: 3,
-                photoUrl: 'https://orbita96.ru/upload/medialibrary/fcb/fcbfc077af4ece60c115ae6bb0f90e74.jpg',
+                photoUrl: 'https://orbita96.ru/upload/medialibrary/fcb' +
+                  '/fcbfc077af4ece60c115ae6bb0f90e74.jpg',
                 followed: false,
                 fullName: 'Maxim Fedorov',
                 status: 'i am a son by Vadim and Kate',
                 location: {city: 'LA', country: 'USA'}}]
         )
     }
-
-
-
     return(
         <div>
             {
@@ -51,8 +52,10 @@ const Users = (props: UsersType) => {
                        <div>
                            {
                                u.followed
-                               ? <button onClick={()=> props.unfollow(u.id)}>Unfollow</button>
-                               : <button onClick={()=> props.follow(u.id)}>Follow</button>
+                               ? <button onClick={()=>
+                                   props.unfollow(u.id)}>Unfollow</button>
+                               : <button onClick={()=>
+                                   props.follow(u.id)}>Follow</button>
                            }
                        </div>
                    </span>
