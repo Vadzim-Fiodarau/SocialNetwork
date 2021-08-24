@@ -4,147 +4,158 @@ import {messagesTypes} from "../components/Dialogs/Mesages/Message";
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
+import {initialStateType} from "./users-reducer";
 
 export type statePropsType = {
-    profilePage: profilePagePropsType
-    dialogsPage: dialogsPagePropsType
-    sidebar: sidebarPropsType
+  profilePage: profilePagePropsType
+  dialogsPage: dialogsPagePropsType
+  sidebar: sidebarPropsType
 }
 export type sidebarPropsType = {}
 export type profilePagePropsType = {
-    posts: Array<postsType>
-    newPostText: string
+  posts: Array<postsType>
+  newPostText: string
 
 }
 export type dialogsPagePropsType = {
-    messages: Array<messagesTypes>
-    dialogs: Array<dialogsTypes>
-    newMessageBody: string
+  messages: Array<messagesTypes>
+  dialogs: Array<dialogsTypes>
+  newMessageBody: string
 }
 export type ReduxStoreType = {
-    subscribe: (observer: () => void) => void
-    getState: () => statePropsType
-    dispatch: (action: ActionsTypes) => void
+  subscribe: (observer: () => void) => void
+  getState: () => statePropsType
+  dispatch: (action: ActionsTypes) => void
 }
 export type addPostPropsType = {
-    addPost: () => void
-    rerenderEntireTree: () => void
+  addPost: () => void
+  rerenderEntireTree: () => void
 }
 export  type StoreType = {
-    _state: statePropsType
-    _callSubscriber: (state: statePropsType) => void
-    subscribe: (observer: () => void) => void
-    getState: () => statePropsType
-    dispatch: (action: ActionsTypes) => void
+  _state: statePropsType
+  _callSubscriber: (state: statePropsType) => void
+  subscribe: (observer: () => void) => void
+  getState: () => statePropsType
+  dispatch: (action: ActionsTypes) => void
 }
 export type SetUserType = {
-    type: 'SET-USERS'
-    users: any
+  type: 'SET-USERS'
+  users: initialStateType[]
 }
 export type UnfollowActionType = {
-    type: 'UNFOLLOW'
-    userId: number
+  type: 'UNFOLLOW'
+  userId: number
 }
 export type FollowActionType = {
-    type: 'FOLLOW'
-    userId: number
+  type: 'FOLLOW'
+  userId: number
 }
 export type AddPostActionType = {
-    type: 'ADD POST'
+  type: 'ADD POST'
 
 }
 export type UpdateNewPostTextActionType = {
-    type: 'UPDATE-NEW-POST-TEXT'
-    newText: string
+  type: 'UPDATE-NEW-POST-TEXT'
+  newText: string
 }
 export type UpdateNewMessageBodyActionType = {
-    type: 'UPDATE-NEW-MESSAGE-BODY'
-    body: string
+  type: 'UPDATE-NEW-MESSAGE-BODY'
+  body: string
 }
 export type SendMessageActionType = {
-    type: 'SEND-MESSAGE'
-    newMessageBody: string
+  type: 'SEND-MESSAGE'
+  newMessageBody: string
+}
+export type SetCurrentPageType = {
+  type: 'SET-CURRENT-PAGE'
+  currentPage: number
+}
+export type SetTotalCountType = {
+  type: 'SET-TOTAL-COUNT'
+  totalCount: number
 }
 export type ActionsTypes =
-    | AddPostActionType
-    | UpdateNewPostTextActionType
-    | UpdateNewMessageBodyActionType
-    | SendMessageActionType
-    | FollowActionType
-    | UnfollowActionType
-    | SetUserType
+  | AddPostActionType
+  | UpdateNewPostTextActionType
+  | UpdateNewMessageBodyActionType
+  | SendMessageActionType
+  | FollowActionType
+  | UnfollowActionType
+  | SetUserType
+  | SetCurrentPageType
+  | SetTotalCountType
 
 let store: StoreType = {
-    _state: {
-        profilePage: {
-            posts: [
-                {id: 1, message: 'Hello, how are you?', likeCounter: 12},
-                {id: 2, message: "It's my first post!", likeCounter: 11},
-            ],
-            newPostText: ''
-        },
-        dialogsPage: {
-            dialogs: [
-                {
-                    id: 1,
-                    name: 'Vadim',
-                    src: 'https://sun9-75.userapi.com/impf/c630924/v630924802/' +
-                      '1446a/s33tSPeU4Ik.jpg?size=720x1080&quality=96&sign=' +
-                      'b00fd02c1e71a239a074008d458dcc40&type=album'
-                },
-                {
-                    id: 2,
-                    name: 'Kate',
-                    src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:' +
-                      'ANd9GcTirwV3sJSSt0Xf8C43cLbEv2sJR_qWmMpAKnEhdmZbl2b' +
-                      '8Cnu8LKZ_CDDvidqsKm4-00k&usqp=CAU'
-                },
-                {
-                    id: 3,
-                    name: 'Alex',
-                    src: 'https://www.interfax.ru/ftproot/photos/' +
-                      'photostory/2019/07/09/week4_700.jpg'
-                },
-                {
-                    id: 4,
-                    name: 'Sveta',
-                    src: 'https://www.istockphoto.com/resources/images/' +
-                      'PhotoFTLP/Signature-1205756464.jpg'
-                },
-                {
-                    id: 5,
-                    name: 'Dimych',
-                    src: 'https://st4.styapokupayu.ru/images/blog_posts/covers' +
-                      '/000/136/369_large.jpg?1576853877'
-                },
-            ],
-            messages: [
-                {id: 1, message: 'Hi'},
-                {id: 2, message: 'How is your going?'},
-                {id: 3, message: 'Yo'},
-                {id: 4, message: 'Yo'},
-                {id: 5, message: 'Yo'},
-            ],
-            newMessageBody: ''
-        },
-        sidebar: {}
+  _state: {
+    profilePage: {
+      posts: [
+        {id: 1, message: 'Hello, how are you?', likeCounter: 12},
+        {id: 2, message: "It's my first post!", likeCounter: 11},
+      ],
+      newPostText: ''
     },
+    dialogsPage: {
+      dialogs: [
+        {
+          id: 1,
+          name: 'Vadim',
+          src: 'https://sun9-75.userapi.com/impf/c630924/v630924802/' +
+            '1446a/s33tSPeU4Ik.jpg?size=720x1080&quality=96&sign=' +
+            'b00fd02c1e71a239a074008d458dcc40&type=album'
+        },
+        {
+          id: 2,
+          name: 'Kate',
+          src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:' +
+            'ANd9GcTirwV3sJSSt0Xf8C43cLbEv2sJR_qWmMpAKnEhdmZbl2b' +
+            '8Cnu8LKZ_CDDvidqsKm4-00k&usqp=CAU'
+        },
+        {
+          id: 3,
+          name: 'Alex',
+          src: 'https://www.interfax.ru/ftproot/photos/' +
+            'photostory/2019/07/09/week4_700.jpg'
+        },
+        {
+          id: 4,
+          name: 'Sveta',
+          src: 'https://www.istockphoto.com/resources/images/' +
+            'PhotoFTLP/Signature-1205756464.jpg'
+        },
+        {
+          id: 5,
+          name: 'Dimych',
+          src: 'https://st4.styapokupayu.ru/images/blog_posts/covers' +
+            '/000/136/369_large.jpg?1576853877'
+        },
+      ],
+      messages: [
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'How is your going?'},
+        {id: 3, message: 'Yo'},
+        {id: 4, message: 'Yo'},
+        {id: 5, message: 'Yo'},
+      ],
+      newMessageBody: ''
+    },
+    sidebar: {}
+  },
 
-    _callSubscriber() {
-        console.log('State changed')
-    },
-    getState() {
-        return this._state
-    },
-    subscribe(observe) {
-        this._callSubscriber = observe
-    },
-    dispatch(action: ActionsTypes) { // {type: 'ADD POST'}
-        this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
-        this._callSubscriber(this._state)
-    }
+  _callSubscriber() {
+    console.log('State changed')
+  },
+  getState() {
+    return this._state
+  },
+  subscribe(observe) {
+    this._callSubscriber = observe
+  },
+  dispatch(action: ActionsTypes) { // {type: 'ADD POST'}
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+    this._callSubscriber(this._state)
+  }
 }
 
 export default store;
