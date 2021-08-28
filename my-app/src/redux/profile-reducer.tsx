@@ -1,5 +1,10 @@
-import {ActionsTypes, AddPostActionType, UpdateNewPostTextActionType} from "./store";
+
 import {postsType} from "../components/Profile/MyPosts/MyPosts";
+import {
+    ActionsTypes,
+    AddPostActionType,
+    UpdateNewPostTextActionType
+} from "./users-reducer";
 
 const ADD_POST = 'ADD POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';

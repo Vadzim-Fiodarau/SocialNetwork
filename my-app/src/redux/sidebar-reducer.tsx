@@ -1,4 +1,5 @@
-import {ActionsTypes, statePropsType} from "./store";
+import {ActionsTypes} from "./users-reducer";
+
 
 type StateSidebarPropsType = {}
 const initialState = {}

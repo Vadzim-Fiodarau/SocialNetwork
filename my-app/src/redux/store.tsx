@@ -4,7 +4,7 @@ import {messagesTypes} from "../components/Dialogs/Mesages/Message";
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
-import {initialStateType} from "./users-reducer";
+import {ActionsTypes, initialStateType} from "./users-reducer";
 
 export type statePropsType = {
   profilePage: profilePagePropsType
@@ -38,52 +38,6 @@ export  type StoreType = {
   getState: () => statePropsType
   dispatch: (action: ActionsTypes) => void
 }
-export type SetUserType = {
-  type: 'SET-USERS'
-  users: initialStateType[]
-}
-export type UnfollowActionType = {
-  type: 'UNFOLLOW'
-  userId: number
-}
-export type FollowActionType = {
-  type: 'FOLLOW'
-  userId: number
-}
-export type AddPostActionType = {
-  type: 'ADD POST'
-
-}
-export type UpdateNewPostTextActionType = {
-  type: 'UPDATE-NEW-POST-TEXT'
-  newText: string
-}
-export type UpdateNewMessageBodyActionType = {
-  type: 'UPDATE-NEW-MESSAGE-BODY'
-  body: string
-}
-export type SendMessageActionType = {
-  type: 'SEND-MESSAGE'
-  newMessageBody: string
-}
-export type SetCurrentPageType = {
-  type: 'SET-CURRENT-PAGE'
-  currentPage: number
-}
-export type SetTotalCountType = {
-  type: 'SET-TOTAL-COUNT'
-  totalCount: number
-}
-export type ActionsTypes =
-  | AddPostActionType
-  | UpdateNewPostTextActionType
-  | UpdateNewMessageBodyActionType
-  | SendMessageActionType
-  | FollowActionType
-  | UnfollowActionType
-  | SetUserType
-  | SetCurrentPageType
-  | SetTotalCountType
 
 let store: StoreType = {
   _state: {

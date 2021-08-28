@@ -1,6 +1,11 @@
-import {ActionsTypes, SendMessageActionType, UpdateNewMessageBodyActionType} from "./store";
+
 import {messagesTypes} from "../components/Dialogs/Mesages/Message";
 import {dialogsTypes} from "../components/Dialogs/DialogItem/DialogItem";
+import {
+    ActionsTypes,
+    SendMessageActionType,
+    UpdateNewMessageBodyActionType
+} from "./users-reducer";
 
 
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'

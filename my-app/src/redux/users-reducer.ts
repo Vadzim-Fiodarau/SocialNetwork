@@ -1,14 +1,62 @@
-import {
-  ActionsTypes,
-  FollowActionType, SetCurrentPageType, SetTotalCountType, SetUserType,
-  UnfollowActionType,
-} from "./store";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
 const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT'
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
+export type SetUserType = {
+  type: 'SET-USERS'
+  users: initialStateType[]
+}
+export type UnfollowActionType = {
+  type: 'UNFOLLOW'
+  userId: number
+}
+export type FollowActionType = {
+  type: 'FOLLOW'
+  userId: number
+}
+export type AddPostActionType = {
+  type: 'ADD POST'
+
+}
+export type UpdateNewPostTextActionType = {
+  type: 'UPDATE-NEW-POST-TEXT'
+  newText: string
+}
+export type UpdateNewMessageBodyActionType = {
+  type: 'UPDATE-NEW-MESSAGE-BODY'
+  body: string
+}
+export type SendMessageActionType = {
+  type: 'SEND-MESSAGE'
+  newMessageBody: string
+}
+export type SetCurrentPageType = {
+  type: 'SET-CURRENT-PAGE'
+  currentPage: number
+}
+export type SetTotalCountType = {
+  type: 'SET-TOTAL-COUNT'
+  totalCount: number
+}
+export type ToggleIsFetchingType = {
+  type: 'TOGGLE-IS-FETCHING'
+  isFetching: boolean
+}
+export type ActionsTypes =
+  | AddPostActionType
+  | UpdateNewPostTextActionType
+  | UpdateNewMessageBodyActionType
+  | SendMessageActionType
+  | FollowActionType
+  | UnfollowActionType
+  | SetUserType
+  | SetCurrentPageType
+  | SetTotalCountType
+  | ToggleIsFetchingType
+
 
 export type locationType = {
   city: string
@@ -29,13 +77,15 @@ export type statePropsType = {
   pageSize: number
   totalUsersCount: number
   currentPage: number
+  isFetching: boolean
 }
 
 const initialState: statePropsType = {
   users: [],
   pageSize: 5,
   totalUsersCount: 0,
-  currentPage: 3
+  currentPage: 1,
+  isFetching: true,
 }
 
 const usersReducer = (state: statePropsType = initialState,
@@ -75,21 +125,28 @@ const usersReducer = (state: statePropsType = initialState,
         ...state, totalUsersCount: action.totalCount
       }
     }
+    case TOGGLE_IS_FETCHING: {
+      return {
+        ...state, isFetching: action.isFetching
+      }
+    }
     default:
       return state
 
   }
 }
 
-export const followAC = (userId: number): FollowActionType =>
+export const follow = (userId: number): FollowActionType =>
   ({type: FOLLOW, userId})
-export const unfollowAC = (userId: number): UnfollowActionType =>
+export const unfollow = (userId: number): UnfollowActionType =>
   ({type: UNFOLLOW, userId})
-export const setUsersAC = (users: initialStateType[]): SetUserType =>
+export const setUsers = (users: initialStateType[]): SetUserType =>
   ({type: SET_USERS, users})
-export const setCurrentPageAC = (currentPage: number): SetCurrentPageType =>
+export const setCurrentPage = (currentPage: number): SetCurrentPageType =>
   ({type: SET_CURRENT_PAGE, currentPage})
-export const setTotalUsersAC = (totalCount: number): SetTotalCountType =>
+export const setTotalUsersCount = (totalCount: number): SetTotalCountType =>
   ({type: SET_TOTAL_COUNT, totalCount})
+export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingType =>
+  ({type: TOGGLE_IS_FETCHING, isFetching})
 
 export default usersReducer
