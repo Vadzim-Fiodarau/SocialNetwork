@@ -14,7 +14,8 @@ export type statePropsType = {
 export type sidebarPropsType = {}
 export type profilePagePropsType = {
   posts: Array<postsType>
-  newPostText: string
+  newPostText: string,
+  profile: null
 
 }
 export type dialogsPagePropsType = {
@@ -46,7 +47,8 @@ let store: StoreType = {
         {id: 1, message: 'Hello, how are you?', likeCounter: 12},
         {id: 2, message: "It's my first post!", likeCounter: 11},
       ],
-      newPostText: ''
+      newPostText: '',
+      profile: null
     },
     dialogsPage: {
       dialogs: [

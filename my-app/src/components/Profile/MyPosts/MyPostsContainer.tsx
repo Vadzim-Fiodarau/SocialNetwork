@@ -3,6 +3,7 @@ import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../red
 import MyPosts, {postsType} from "./MyPosts";
 import {connect} from "react-redux";
 import {statePropsType} from "../../../redux/store";
+import {Dispatch} from "redux";
 
 //
 // type MyPostsContainerTypeProps = {
@@ -43,7 +44,7 @@ const mapStateToProps = (state: statePropsType) => {
         newPostText: state.profilePage.newPostText
     }
 }
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         addPost: () => {
             dispatch(addPostActionCreator())

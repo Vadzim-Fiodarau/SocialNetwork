@@ -1,3 +1,4 @@
+import {profilePagePropsType} from "./store";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -45,6 +46,10 @@ export type ToggleIsFetchingType = {
   type: 'TOGGLE-IS-FETCHING'
   isFetching: boolean
 }
+export type setUserProfileType = {
+  type: 'SET-USER-TYPE'
+  profile: null
+}
 export type ActionsTypes =
   | AddPostActionType
   | UpdateNewPostTextActionType
@@ -56,6 +61,7 @@ export type ActionsTypes =
   | SetCurrentPageType
   | SetTotalCountType
   | ToggleIsFetchingType
+  | setUserProfileType
 
 
 export type locationType = {
@@ -65,7 +71,7 @@ export type locationType = {
 
 export type initialStateType = {
   id: number
-  photos: {small: string, large: string}
+  photos: { small: string, large: string }
   followed: boolean
   name: string
   status: string

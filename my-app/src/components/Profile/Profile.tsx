@@ -11,11 +11,15 @@ import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 //
 // }
 
-const Profile = () => {
+
+type ProfilePropsType = {
+  profile: any
+}
+const Profile = (props: ProfilePropsType) => {
 
         return (
             <div>
-                <ProfileInfo/>
+                <ProfileInfo profile={props.profile}/>
                 <MyPostsContainer/>
             </div>
         )

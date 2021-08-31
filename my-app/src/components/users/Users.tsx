@@ -2,6 +2,7 @@ import styles from "./users.module.css";
 import userPhoto from "../../assets/img/users.jpg";
 import React from "react";
 import {initialStateType} from "../../redux/users-reducer";
+import {NavLink} from 'react-router-dom';
 
 export type UsersType = {
   users: initialStateType[]
@@ -41,9 +42,11 @@ export const Users = (props: UsersType) => {
         props.users.map(u => <div key={u.id}>
                    <span>
                        <div>
+                         <NavLink to ={'/profile/' + u.id}>
                            <img
                              src={u.photos.small !== null ? u.photos.small : userPhoto}
                              className={styles.userPhoto}/>
+                           </NavLink>
                        </div>
                        <div>
                            {
