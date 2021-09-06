@@ -50,6 +50,14 @@ export type setUserProfileType = {
   type: 'SET-USER-TYPE'
   profile: null
 }
+export type authActionType = {
+  type: 'SET_USER_DATA'
+  data: {
+    userId: null,
+    email: null,
+    login: null
+  }
+}
 export type ActionsTypes =
   | AddPostActionType
   | UpdateNewPostTextActionType
@@ -62,6 +70,7 @@ export type ActionsTypes =
   | SetTotalCountType
   | ToggleIsFetchingType
   | setUserProfileType
+  | authActionType
 
 
 export type locationType = {
