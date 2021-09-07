@@ -97,7 +97,7 @@ let store: StoreType = {
     sidebar: {}
   },
 
-  _callSubscriber() {
+  _callSubscriber () {
     console.log('State changed')
   },
   getState() {
