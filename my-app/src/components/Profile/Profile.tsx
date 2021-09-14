@@ -3,20 +3,8 @@ import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 
-// type ProfileTypeProps = {
-//    // posts: Array<postsType>
-//    //  newPostText: string
-//    //  dispatch: (action:ActionsTypes) => void
-//     store:ReduxStoreType
-//
-// }
 
-
-type ProfilePropsType = {
-  profile: any
-}
-const Profile = (props: ProfilePropsType) => {
-
+const Profile = (props: any) => {
         return (
             <div>
                 <ProfileInfo profile={props.profile}/>
@@ -27,7 +15,3 @@ const Profile = (props: ProfilePropsType) => {
 
 export default Profile
 
-
-// posts ={props.posts}
-// dispatch={props.dispatch}
-// newPostText={props.newPostText}

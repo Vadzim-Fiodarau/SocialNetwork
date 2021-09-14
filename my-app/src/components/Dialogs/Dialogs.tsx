@@ -1,63 +1,69 @@
 import React, {ChangeEvent} from 'react';
 import s from './Dialogs.module.css'
-import DialogItem, {dialogsTypes} from "./DialogItem/DialogItem";
-import Message, {messagesTypes} from "./Mesages/Message";
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Mesages/Message";
 import {dialogsPagePropsType} from "../../redux/store";
-
-
+import {Redirect} from "react-router-dom";
 
 
 type DialogsPropsType = {
-    updateNewMessageBody:(body:string) => void
-    sendMessage: ()=> void
-    dialogsPage: dialogsPagePropsType
+  updateNewMessageBody: (body: string) => void
+  sendMessage: () => void
+  dialogsPage: dialogsPagePropsType
+  isAuth: boolean
 
 }
 
 const Dialogs = (props: DialogsPropsType) => {
 
-    let state = props.dialogsPage
+  let state = props.dialogsPage
 
-    let dialogsElements = state.dialogs
-        .map((d: { name: string; id: number; src: string }) => <DialogItem name={d.name} id={d.id} src={d.src}/>)
-
-
-    let messagesElements = state.messages
-        .map((m: { message: string; id: number; }) => <Message message={m.message} id={m.id}/>)
+  let dialogsElements = state.dialogs
+    .map((d: { name: string; id: number; src: string }) => <DialogItem
+      name={d.name} id={d.id} src={d.src}/>)
 
 
-    let newMessageBody = state.newMessageBody
+  let messagesElements = state.messages
+    .map((m: { message: string; id: number; }) => <Message message={m.message}
+                                                           id={m.id}/>)
 
 
-    let onSendMessageClick = () => {
-        props.sendMessage()
-    }
+  let newMessageBody = state.newMessageBody
 
-    let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let body = e.target.value
-        props.updateNewMessageBody(body)
-    }
 
-    return (
+  let onSendMessageClick = () => {
+    props.sendMessage()
+  }
 
-        <div className={s.dialogs}>
-            <div className={s.dialogsItem}>
-                {dialogsElements}
-            </div>
-            <div className={s.messages}>
-                <div>{messagesElements}</div>
-                <div>
-                    <div><textarea
-                        onChange={onNewMessageChange}
-                        value={newMessageBody}
-                        placeholder={'enter your name'}>
+  let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    let body = e.target.value
+    props.updateNewMessageBody(body)
+  }
+
+  if (!props.isAuth) return <Redirect to={'/login'}/>
+
+  return (
+
+    <div className={s.dialogs}>
+      <div className={s.dialogsItem}>
+        {dialogsElements}
+      </div>
+      <div className={s.messages}>
+        <div>{messagesElements}</div>
+        <div>
+          <div><textarea
+            onChange={onNewMessageChange}
+            value={newMessageBody}
+            placeholder={'enter your name'}>
                     </textarea></div>
-                    <div><button onClick={onSendMessageClick }>Send</button></div>
-                </div>
-            </div>
+          <div>
+            <button onClick={onSendMessageClick}>Send</button>
+          </div>
         </div>
+      </div>
+    </div>
 
-    )
+  )
 }
 
 export default Dialogs

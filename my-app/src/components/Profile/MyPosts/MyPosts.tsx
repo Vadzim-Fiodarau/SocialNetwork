@@ -23,7 +23,8 @@ type MyPostsTypeProps = {
 const MyPosts = (props: MyPostsTypeProps) => {
 
     let elementsPosts = props.posts
-        .map((p: { message: string; likeCounter: number; }) => <Post message={p.message} likeCounter={p.likeCounter}/>)
+        .map((p: { message: string; likeCounter: number; }) =>
+          <Post message={p.message} likeCounter={p.likeCounter}/>)
 
     let onAddPost = () => {
         props.addPost()
