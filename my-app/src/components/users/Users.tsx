@@ -11,8 +11,7 @@ export type UsersType = {
   pageSize: number
   totalUsersCount: number
   currentPage: number
-  followSuccess: (userId: number) => void
-  unfollowSuccess: (userId: number) => void
+
   onPageChanged: (pageNumber: number) => void
   toggleIsFollowingProgress: (isFetching: boolean, userId: number) => void
   followingInProgress: []
