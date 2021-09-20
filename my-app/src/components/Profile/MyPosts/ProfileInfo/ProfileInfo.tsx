@@ -2,6 +2,7 @@ import React from "react";
 import s from './ProfileInfo.module.css'
 import {Preloader} from "../../../../common/Preloader/Preloader";
 import {ProfileResponseType} from "../../../../redux/profile-reducer";
+import ProfileStatus from './ProfileStatus'
 
 
 type ProfileInfoPropsType = {
@@ -14,10 +15,10 @@ const ProfileInfo = (props:ProfileInfoPropsType) => {
 
     return (
         <div>
-            <div>
-                <img
-                    src='https://buddy.ghostpool.com/wp-content/uploads/photodune-3382849-mountain3-s1-1003x480.jpg'/>
-            </div>
+            {/*<div>*/}
+            {/*    <img*/}
+            {/*        src='https://buddy.ghostpool.com/wp-content/uploads/photodune-3382849-mountain3-s1-1003x480.jpg'/>*/}
+            {/*</div>*/}
 
             <div className={s.descriptionBlock}>
               <img src={props.profile.photos.large}/>
@@ -33,9 +34,8 @@ const ProfileInfo = (props:ProfileInfoPropsType) => {
                 : null}</div>
               <div>{props.profile.lookingForAJobDescription}</div>
               <div>{props.profile.fullName}</div>
-                avatar +description
+                <ProfileStatus status={'Hello'}/>
             </div>
-
         </div>
     )
 }
