@@ -1,12 +1,17 @@
 import React from "react";
 import s from './ProfileInfo.module.css'
 import {Preloader} from "../../../../common/Preloader/Preloader";
-import {ProfileResponseType} from "../../../../redux/profile-reducer";
+import {
+  ProfileResponseType,
+  updateStatus
+} from "../../../../redux/profile-reducer";
 import ProfileStatus from './ProfileStatus'
 
 
 type ProfileInfoPropsType = {
   profile: ProfileResponseType
+  status: string
+  updateStatus: typeof updateStatus
 }
 const ProfileInfo = (props:ProfileInfoPropsType) => {
   if(!props.profile) {
@@ -34,7 +39,7 @@ const ProfileInfo = (props:ProfileInfoPropsType) => {
                 : null}</div>
               <div>{props.profile.lookingForAJobDescription}</div>
               <div>{props.profile.fullName}</div>
-                <ProfileStatus status={'Hello'}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     )

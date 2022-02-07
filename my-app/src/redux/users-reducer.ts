@@ -1,4 +1,3 @@
-
 import {Dispatch} from "redux";
 import {userAPI} from "../api/api";
 import {ProfileResponseType} from "./profile-reducer";
@@ -26,6 +25,11 @@ export type FollowActionType = {
 }
 export type AddPostActionType = {
   type: 'ADD POST'
+
+}
+export type StatusActionType = {
+  type: 'SET-STATUS'
+  status: string
 
 }
 export type UpdateNewPostTextActionType = {
@@ -84,6 +88,7 @@ export type ActionsTypes =
   | setUserProfileType
   | authActionType
   | ToggleIsFollowingProgressType
+  | StatusActionType
 
 
 export type locationType = {
@@ -202,7 +207,7 @@ export const getUsers = (currentPage: number, pageSize: number) => {
   }
 }
 
-export const follow = (userID:number) => {
+export const follow = (userID: number) => {
   return (dispatch: Dispatch<ActionsTypes>) => {
     dispatch(toggleIsFollowingProgress(true, userID))
     userAPI.followed(userID).then(data => {
@@ -214,7 +219,7 @@ export const follow = (userID:number) => {
   }
 }
 
-export const unFollow = (userID:number) => {
+export const unFollow = (userID: number) => {
   return (dispatch: Dispatch<ActionsTypes>) => {
     dispatch(toggleIsFollowingProgress(true, userID))
     userAPI.unFollowed(userID).then(data => {

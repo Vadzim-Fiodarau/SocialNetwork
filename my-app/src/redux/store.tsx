@@ -1,10 +1,7 @@
 import {postsType} from "../components/Profile/MyPosts/MyPosts";
 import {dialogsTypes} from "../components/Dialogs/DialogItem/DialogItem";
 import {messagesTypes} from "../components/Dialogs/Mesages/Message";
-import {profileReducer} from "./profile-reducer";
-import {dialogsReducer} from "./dialogs-reducer";
-import {sidebarReducer} from "./sidebar-reducer";
-import {ActionsTypes, initialStateType} from "./users-reducer";
+
 
 export type statePropsType = {
   profilePage: profilePagePropsType
