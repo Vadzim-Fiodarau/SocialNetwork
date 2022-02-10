@@ -3,13 +3,9 @@ import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {ProfileResponseType, updateStatus} from "../../redux/profile-reducer";
 
-type ProfileType = {
-  profile: ProfileResponseType
-  status: string
-  updateStatus: typeof updateStatus
-}
 
-const Profile = (props: ProfileType) => {
+
+const Profile = (props: any) => {
         return (
             <div>
                 <ProfileInfo
