@@ -25,6 +25,7 @@ export type FollowActionType = {
 }
 export type AddPostActionType = {
   type: 'ADD POST'
+  newPostText: string
 
 }
 export type StatusActionType = {

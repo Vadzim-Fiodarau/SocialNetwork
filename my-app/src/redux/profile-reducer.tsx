@@ -15,7 +15,6 @@ const SET_STATUS = 'SET-STATUS';
 
 export type stateProfilePropsType = {
   posts: Array<postsType>
-  newPostText: string
   profile: ProfileResponseType | null
   status: string
 }
@@ -47,7 +46,6 @@ const initialState = {
     {id: 1, message: 'Hello, how are you?', likeCounter: 12},
     {id: 2, message: "It's my first post!", likeCounter: 11},
   ],
-  newPostText: '',
   profile: null,
   status: ''
 
@@ -60,7 +58,7 @@ export const profileReducer = (state: stateProfilePropsType = initialState,
     case ADD_POST: {
       let newPost = {
         id: 5,
-        message: state.newPostText,
+        message: action.newPostText,
         likeCounter: 0
       }
       return {
@@ -93,8 +91,8 @@ export const profileReducer = (state: stateProfilePropsType = initialState,
   }
 }
 
-export const addPostActionCreator = ()
-  : AddPostActionType => ({type: ADD_POST})
+export const addPostActionCreator = (newPostText: string)
+  : AddPostActionType => ({type: ADD_POST, newPostText})
 
 export const updateNewPostTextActionCreator = (text: string)
   : UpdateNewPostTextActionType =>
