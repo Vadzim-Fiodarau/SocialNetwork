@@ -69,10 +69,11 @@ export type setUserProfileType = {
 }
 export type authActionType = {
   type: 'SET_USER_DATA'
-  data: {
+  payload: {
     userId: null,
     email: null,
-    login: null
+    login: null,
+    isAuth: boolean
   }
 }
 export type ActionsTypes =

@@ -2,7 +2,6 @@ import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
 import React, {ChangeEvent} from 'react';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {FormDataType, LoginForm} from "../../Login/Login";
 import {maxLengthCreator, required} from "../../../units/validators";
 import { Textarea } from '../../../common/FormsControls/FormsControls';
 
