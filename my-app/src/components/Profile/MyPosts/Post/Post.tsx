@@ -7,6 +7,7 @@ type PostType = {
 }
 
 const Post = (props: PostType) => {
+
     return (
 
             <div className={classes.item}>

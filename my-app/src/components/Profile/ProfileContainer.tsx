@@ -19,7 +19,8 @@ type PropsType = RouteComponentProps<PathParamsType> & ownProps
 type mapStateType = {
   profile: ProfileResponseType | null
   status: string
-
+  authorizedUserId: string
+  isAuth: boolean
 }
 
 type mdtpType = {
@@ -36,7 +37,7 @@ class ProfileContainer extends React.Component<PropsType> {
   componentDidMount() {
     let userId = this.props.match.params.userId;
     if(!userId){
-      userId = '2'
+      userId = this.props.authorizedUserId
     }
     this.props.getUserProfile(+userId)
     this.props.getUserStatus(+userId)
@@ -64,6 +65,8 @@ const mapStateToProps = (state: AppPropsType): mapStateType => {
   return {
     profile: state.profilePage.profile,
     status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth
 
   }
 }

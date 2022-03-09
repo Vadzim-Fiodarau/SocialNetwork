@@ -5,13 +5,12 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../units/validators";
 import { Textarea } from '../../../common/FormsControls/FormsControls';
 
-
 export type postsType = {
   id: number
   message: string
   likeCounter: number
 }
-type MyPostsTypeProps = {
+export type MyPostsTypeProps = {
   posts: Array<postsType>
   newPostText: string
   addPost: (newPostText:string) => void
@@ -29,15 +28,6 @@ const MyPosts = (props: MyPostsTypeProps) => {
   let elementsPosts = props.posts
     .map((p: { message: string; likeCounter: number; }) =>
       <Post message={p.message} likeCounter={p.likeCounter}/>)
-  //
-  // let onAddPost = () => {
-  //   props.addPost()
-  // }
-  //
-  // let onChangePost = (e: ChangeEvent<HTMLTextAreaElement>) => {
-  //   let text = e.currentTarget.value
-  //   props.updateNewPostText(text)
-  // }
 
   const onSubmit = (formData: FormDataPostType) => {
     props.addPost(formData.newPostText)
@@ -46,15 +36,6 @@ const MyPosts = (props: MyPostsTypeProps) => {
   return (
     <div className={classes.postBlock}>
       <h3>My posts</h3>
-
-      {/*<div>*/}
-      {/*    <div>*/}
-      {/*        <textarea value={props.newPostText} onChange={onChangePost}/>*/}
-      {/*    </div>*/}
-      {/*    <div>*/}
-      {/*        <button onClick={onAddPost}>Add post</button>*/}
-      {/*    </div>*/}
-      {/*</div>*/}
       <MyPostReduxForm onSubmit={onSubmit} />
       <div className={classes.posts}>
         {elementsPosts}
