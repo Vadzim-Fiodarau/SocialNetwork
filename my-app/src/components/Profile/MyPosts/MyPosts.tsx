@@ -35,7 +35,7 @@ const MyPosts = (props: MyPostsTypeProps) => {
 
   return (
     <div className={classes.postBlock}>
-      <h3>My posts</h3>
+      <h3>My posts!</h3>
       <MyPostReduxForm onSubmit={onSubmit} />
       <div className={classes.posts}>
         {elementsPosts}
